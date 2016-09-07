@@ -1,0 +1,1 @@
+create table users (user_id bigint,user_first_name varchar(30),user_last_name varchar(30),user_account_name varchar(30),user_email varchar(30),user_date_birth date);
