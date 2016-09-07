@@ -1,26 +1,45 @@
 package fer.shop.entity;
 
 import java.math.BigInteger;
+import java.util.*;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Product {
 	@Id
 	@GeneratedValue
+	@Column(name = "PRODUCT_ID", unique = true, nullable = false)
 	private Long productId;
+	
+	@Column(name = "PRODUCT_NAME", nullable = false)
 	private String productName;
+	
+	@Column(name = "PRODUCT_DESC", nullable = false)
 	private String productDescription;
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CATEGORY", nullable = false)
-	private Category productCategory;
+	
+	@ManyToMany(fetch = FetchType.LAZY, mappedBy = "products")
+	private Set<Category> productCategories = new HashSet<>();
+	
+	@Column(name = "PRODUCT_PRICE", nullable = false)
 	private BigInteger productPrice;
-	private String productState;
+	
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "OWNER", nullable = false)
+	private User owner;
+	
+	@OneToOne(fetch = FetchType.LAZY, mappedBy = "reservedProduct", cascade = CascadeType.ALL)	
+	private Reservation reservation;
+	
 	public Long getProductId() {
 		return productId;
 	}
@@ -39,22 +58,23 @@ public class Product {
 	public void setProductDescription(String productDescription) {
 		this.productDescription = productDescription;
 	}
-	public Category getProductCategory() {
-		return productCategory;
-	}
-	public void setProductCategory(Category productCategory) {
-		this.productCategory = productCategory;
-	}
 	public BigInteger getProductPrice() {
 		return productPrice;
 	}
 	public void setProductPrice(BigInteger productPrice) {
 		this.productPrice = productPrice;
 	}
-	public String getProductState(){
-		return productState;
+	public User getOwner() {
+		return owner;
 	}
-	public void setProductState(String productState){
-		this.productState = productState;
+	public void setOwner(User owner) {
+		this.owner = owner;
 	}
+	public Set<Category> getProductCategories() {
+		return productCategories;
+	}
+	public void setProductCategories(Set<Category> productCategories) {
+		this.productCategories = productCategories;
+	}
+
 }
