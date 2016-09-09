@@ -111,10 +111,7 @@ public class UserManager {
         try {
         	HibernateSessionManager.beginTransaction();
         	user = userDao.findByID(User.class, user.getUserId());
-        	
-
         	userDao.delete(user);
-            
             HibernateSessionManager.commitTransaction();
         } catch (HibernateException ex) {
             System.out.println("Error deleting user");

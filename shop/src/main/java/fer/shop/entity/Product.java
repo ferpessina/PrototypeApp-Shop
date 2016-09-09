@@ -13,8 +13,11 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 @Entity
+@Table(name = "products", uniqueConstraints = {@UniqueConstraint(columnNames = "PRODUCT_ID")})
 public class Product {
 	@Id
 	@GeneratedValue
@@ -75,6 +78,12 @@ public class Product {
 	}
 	public void setProductCategories(Set<Category> productCategories) {
 		this.productCategories = productCategories;
+	}
+	public Reservation getReservation() {
+		return reservation;
+	}
+	public void setReservation(Reservation reservation) {
+		this.reservation = reservation;
 	}
 
 }

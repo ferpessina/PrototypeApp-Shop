@@ -9,10 +9,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
 
 import java.util.*;
 
 @Entity
+@Table(name = "categories", uniqueConstraints = {@UniqueConstraint(columnNames = "CATEGORY_ID")})
 public class Category {
 	@Id
 	@GeneratedValue

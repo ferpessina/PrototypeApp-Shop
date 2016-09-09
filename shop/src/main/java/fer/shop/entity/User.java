@@ -64,6 +64,15 @@ public class User {
 	public String getUserName() {
 		return userName;
 	}
+	public Set<Product> getUserProducts() {
+		return userProducts;
+	}
+	public void setUserProducts(Set<Product> userProducts) {
+		this.userProducts = userProducts;
+	}
+	public void setUserId(Long userId) {
+		this.userId = userId;
+	}
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
@@ -78,5 +87,11 @@ public class User {
 	}
 	public void setDateOfBirth(Date dateOfBirth) {
 		this.dateOfBirth = dateOfBirth;
+	}
+	public Set<Reservation> getUserBids() {
+		return userBids;
+	}
+	public void setUserBids(Set<Reservation> userBids) {
+		this.userBids = userBids;
 	}
 }
