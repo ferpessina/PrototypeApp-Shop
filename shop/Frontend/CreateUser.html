@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+        <script src="createUser.js"></script>
+    </head>
+
+    <body>
+	
+	<form id="newUser">
+		Username:<input type="text" id="userName" name="userName"/><br/>
+		E-mail:<input type="text" id="userEmail" name="userEmail"/><br/>
+		First name:<input type="text" id="firstName" name="firstName"/><br/>
+		Last name:<input type="text" id="lastName" name="lastName"/><br/>
+		Date of Birth:<input type="string" id="birthDate" placeholder="yyyy-MM-dd" name="birthDate"/><br/>
+		<input type="button" value="Create User" onclick="createUser()"/>
+		<input type="button" value="Back" onclick="goBack()"/>
+	</form>
+	
+	<p id="statusInformation"></p>
+	
+    </body>
+</html>

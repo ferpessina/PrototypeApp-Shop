@@ -19,16 +19,18 @@ public class User {
 	@GeneratedValue
 	@Column(name = "USER_ID", unique = true, nullable = false)
 	private Long userId;
-	@Column(name = "USER_FIRST_NAME", nullable = false)
-	private String firstName;
-	@Column(name = "USER_LAST_NAME", nullable = false)
-	private String lastName;
 	@Column(name = "USER_ACCOUNT_NAME", nullable = false)
 	private String userName;
 	@Column(name = "USER_EMAIL", nullable = false)
 	private String userEmail;
+	@Column(name = "USER_FIRST_NAME", nullable = false)
+	private String firstName;
+	@Column(name = "USER_LAST_NAME", nullable = false)
+	private String lastName;
 	@Column(name = "USER_DATE_BIRTH", nullable = false)
 	private Date dateOfBirth;
+	@Column(name = "USER_LAST_LOGIN", nullable = false)
+	private Date lastLogin;
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "owner", cascade = { CascadeType.ALL })
 	private Set<Product> userProducts = new HashSet<>();
 	@OneToMany(fetch = FetchType.LAZY, mappedBy = "bidder", cascade = { CascadeType.ALL })
@@ -42,12 +44,23 @@ public class User {
 		this.userEmail = userEmail;
 		this.dateOfBirth = new Date();
 	}
-	public User(Long userId){
+	public Long getUserId() {
+		return userId;
+	}
+	public void setUserId(Long userId) {
 		this.userId = userId;
 	}
-	
-	public Long getUserId(){
-		return userId;
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserEmail() {
+		return userEmail;
+	}
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
 	public String getFirstName() {
 		return firstName;
@@ -61,8 +74,11 @@ public class User {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-	public String getUserName() {
-		return userName;
+	public Date getDateOfBirth() {
+		return dateOfBirth;
+	}
+	public void setDateOfBirth(Date dateOfBirth) {
+		this.dateOfBirth = dateOfBirth;
 	}
 	public Set<Product> getUserProducts() {
 		return userProducts;
@@ -70,28 +86,17 @@ public class User {
 	public void setUserProducts(Set<Product> userProducts) {
 		this.userProducts = userProducts;
 	}
-	public void setUserId(Long userId) {
-		this.userId = userId;
-	}
-	public void setUserName(String userName) {
-		this.userName = userName;
-	}
-	public String getUserEmail() {
-		return userEmail;
-	}
-	public void setUserEmail(String userEmail) {
-		this.userEmail = userEmail;
-	}
-	public Date getDateOfBirth() {
-		return dateOfBirth;
-	}
-	public void setDateOfBirth(Date dateOfBirth) {
-		this.dateOfBirth = dateOfBirth;
-	}
 	public Set<Reservation> getUserBids() {
 		return userBids;
 	}
 	public void setUserBids(Set<Reservation> userBids) {
 		this.userBids = userBids;
 	}
+	public Date getLastLogin() {
+		return lastLogin;
+	}
+	public void setLastLogin(Date lastLogin) {
+		this.lastLogin = lastLogin;
+	}
+	
 }

@@ -26,4 +26,35 @@ public class Reservation {
 	private User bidder;
 	@Column(name = "RESERVED_ON", nullable = false)
 	private Date reservedOn;
+	
+	public Long getReservationId() {
+		return reservationId;
+	}
+	public void setReservationId(Long reservationId) {
+		this.reservationId = reservationId;
+	}
+	public Product getReservedProduct() {
+		return reservedProduct;
+	}
+	public void setReservedProduct(Product reservedProduct) {
+		this.reservedProduct = reservedProduct;
+	}
+	public User getBidder() {
+		return bidder;
+	}
+	public void setBidder(User bidder) {
+		this.bidder = bidder;
+	}
+	public Date getReservedOn() {
+		return reservedOn;
+	}
+	public void setReservedOn(Date reservedOn) {
+		this.reservedOn = reservedOn;
+	}
+	public boolean checkIfOutdated(){
+		Date now = new Date();
+		long diff = now.getTime() - reservedOn.getTime();
+		long diffDays = diff / (24 * 60 * 60 * 1000);
+		return (diffDays > 7);
+	}
 }
