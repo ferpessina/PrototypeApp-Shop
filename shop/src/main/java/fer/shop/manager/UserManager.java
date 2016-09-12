@@ -62,7 +62,6 @@ public class UserManager {
 	}
 	
 	public User createUser(UserDto userDto){
-		User user = new User(userDto.getFirstName(),userDto.getLastName(),userDto.getUserName(),userDto.getUserEmail());
 		DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
 		Date dateOfBirth = new Date();
 		try {
@@ -71,7 +70,7 @@ public class UserManager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		user.setDateOfBirth(dateOfBirth);
+		User user = new User(userDto.getFirstName(),userDto.getLastName(),userDto.getUserName(),userDto.getUserEmail(), dateOfBirth);
 		Date date = new Date();
 		user.setLastLogin(date);
 		userDao.save(user);

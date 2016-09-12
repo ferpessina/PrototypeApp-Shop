@@ -37,12 +37,12 @@ public class User {
 	private Set<Reservation> userBids = new HashSet<>();
 	
 	public User(){}
-	public User(String firstName, String lastName, String userName, String userEmail){
+	public User(String firstName, String lastName, String userName, String userEmail, Date dob){
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.userEmail = userEmail;
-		this.dateOfBirth = new Date();
+		this.dateOfBirth = dob;
 	}
 	public Long getUserId() {
 		return userId;

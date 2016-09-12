@@ -28,12 +28,9 @@ public class UserDto {
 
 	private boolean assertDeletable(Date lastLogin){
 		Date now = new Date();
-		System.out.println(lastLogin);
-		System.out.println(now+"\n");
 		long diff = now.getTime() - lastLogin.getTime();
 		long diffDays = diff / (24 * 60 * 60 * 1000);
-		System.out.println(diffDays);
-		return (diffDays > 30);
+		return (diffDays >= 30);
 	}
 	
 	private String formatDate(Date date){
@@ -90,7 +87,7 @@ public class UserDto {
 		this.birthDate = birthDate;
 	}
 
-	public boolean isCanBeDeleted() {
+	public boolean getCanBeDeleted() {
 		return canBeDeleted;
 	}
 
